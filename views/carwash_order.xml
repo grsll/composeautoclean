@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- Carwash Order Views -->
+        <record model="ir.ui.view" id="carwash_order_tree">
+            <field name="name">carwash_order.list</field>
+            <field name="model">compose_auto_clean.carwash_order</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="customer_id"/>
+                    <field name="vehicle_id"/>
+                    <field name="service_name"/>
+                    <field name="price"/>
+                    <field name="duration"/>
+                    <field name="variant"/>
+                    <field name="payment_status"/>
+                    <field name="order_date"/>
+                </list>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="carwash_order_form">
+            <field name="name">carwash_order.form</field>
+            <field name="model">compose_auto_clean.carwash_order</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="vehicle_id"/>
+                            <field name="service_name"/>
+                            <field name="price"/>
+                            <field name="duration"/>
+                            <field name="variant"/>
+                            <field name="payment_status"/>
+                            <field name="order_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="carwash_order_action">
+            <field name="name">Carwash Orders</field>
+            <field name="res_model">compose_auto_clean.carwash_order</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- menu categories -->
+        <menuitem name="Carwash Orders" id="menu_carwash_orders" parent="menu_root"/>
+        <!-- actions -->
+        <menuitem name="Carwash Orders" id="menu_carwash_orders_list" parent="menu_carwash_orders" action="carwash_order_action"/>
+    </data>
+</odoo>

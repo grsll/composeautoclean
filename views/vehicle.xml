@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- Add you code here -->
+        <record id="vehicle_view_list" model="ir.ui.view">
+            <field name="name">compose_auto_clean.vehicle.list</field>
+            <field name="model">compose_auto_clean.vehicle</field>
+            <field name="arch" type="xml">
+                <list string="Daftar Kendaraan">
+                    <field name="name"/>
+                    <field name="vehicle_type"/>
+                    <field name="brand"/>
+                    <field name="color"/>
+                    <field name="customer_id"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="vehicle_view_form" model="ir.ui.view">
+            <field name="name">compose_auto_clean.vehicle.form</field>
+            <field name="model">compose_auto_clean.vehicle</field>
+            <field name="arch" type="xml">
+                <form string="Form Kendaraan">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" placeholder="Contoh: B 1234 ABC"/>
+                                <field name="vehicle_type" widget="radio" options="{'horizontal': true}"/>
+                                <field name="customer_id"/>
+                            </group>
+                            <group>
+                                <field name="brand" placeholder="Contoh: Toyota / Honda"/>
+                                <field name="color"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- compose_auto_clean.vehicle action window -->
+        <record id="vehicle_action" model="ir.actions.act_window">
+            <field name="name">compose_auto_clean.vehicle.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">compose_auto_clean.vehicle</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="menu_vehicle_act" name="Vehicle" parent="menu_master_data" action="vehicle_action" sequence="20"/>
+    </data>
+
+</odoo>
+
+<!-- <notebook>
+                            <page string="Riwayat Cuci" name="wash_history">
+                                <field name="wash_order_ids" readonly="1">
+                                    <list>
+                                        <field name="name" string="Nomor Order"/>
+                                        <field name="date" string="Tanggal"/>
+                                        <field name="state" widget="badge"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook> -->
