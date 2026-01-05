@@ -8,6 +8,7 @@ class CarwashOrder(models.Model):
     _description = "Carwash Order"
 
     # Bisa menggunakan customer dari compose_auto_clean.customer
+    name = fields.Char(string='Order Reference', required=True)
     customer_id = fields.Many2one(
         "compose_auto_clean.customer", string="Customer", required=True
     )
@@ -50,6 +51,11 @@ class CarwashOrder(models.Model):
         default="draft",
     )
     order_date = fields.Datetime(string="Order Date", default=fields.Datetime.now)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Selesai'),
+        ('cancel', 'Dibatalkan')
+    ], string='Status', default='draft')
 
     @api.depends("service_name")
     def _compute_price(self):
