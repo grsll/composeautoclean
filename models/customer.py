@@ -1,22 +1,21 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
+
 
 class Customer(models.Model):
     _name = "compose_auto_clean.customer"
-    _description = "Customer"
+    _description = "Pelanggan"
     _rec_name = "name"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
-    active = fields.Boolean(string="Active", default=True)
+    active = fields.Boolean(string="Aktif", default=True)
     customer_type = fields.Selection(
-        [("baru", "Customer Baru"), ("lama", "Customer Lama")],
+        [("baru", "Pelanggan Baru"), ("lama", "Pelanggan Lama")],
         string="Status Registrasi",
         default="baru",
         tracking=True,
     )
     existing_customer_id = fields.Many2one(
-        "compose_auto_clean.customer", string="Cari Data Customer Lama"
+        "compose_auto_clean.customer", string="Cari Data Pelanggan Lama"
     )
     name = fields.Char(string="Nama", required=True, tracking=True)
     address = fields.Text(string="Alamat")
@@ -39,7 +38,7 @@ class Customer(models.Model):
     )
     last_visit_date = fields.Datetime(string="Kunjungan Terakhir")
     order_ids = fields.One2many(
-        "compose_auto_clean.carwash_order", "customer_id", string="Orders"
+        "compose_auto_clean.carwash_order", "customer_id", string="Pesanan"
     )
 
     @api.onchange("existing_customer_id")
@@ -59,7 +58,6 @@ class Customer(models.Model):
             record.visit_count = len(record.order_ids)
 
     def _sync_vehicle_data(self):
-        """Helper to create or update vehicle record from customer data"""
         Vehicle = self.env["compose_auto_clean.vehicle"]
         for record in self:
             if record.vehicle_number:
