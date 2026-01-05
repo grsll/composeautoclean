@@ -49,10 +49,10 @@ class Vehicle(models.Model):
     ]
 
     @api.constrains('name')
-    def _check_name_format(self):
+    def _check_name(self):
         for rec in self:
             if rec.name and len(rec.name) < 3:
-                raise ValidationError(_("Plat nomor terlalu pendek! Masukkan format yang benar."))
+                raise ValidationError(_("Plat nomor tidak valid!"))
 
     # --- Logic Methods ---
     
