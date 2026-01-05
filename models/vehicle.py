@@ -12,8 +12,6 @@ class Vehicle(models.Model):
         required=True,
         default="mobil",
     )
-    brand = fields.Char(string="Merek Kendaraan")
-    color = fields.Char(string="Warna Kendaraan")
     customer_id = fields.Many2one(
         "compose_auto_clean.customer",
         string="Pemilik Kendaraan",
