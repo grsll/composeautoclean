@@ -10,8 +10,6 @@
                 <list string="Daftar Kendaraan">
                     <field name="name"/>
                     <field name="vehicle_type"/>
-                    <field name="brand"/>
-                    <field name="color"/>
                     <field name="customer_id"/>
                 </list>
             </field>
@@ -28,10 +26,6 @@
                                 <field name="name" placeholder="Contoh: B 1234 ABC"/>
                                 <field name="vehicle_type" widget="radio" options="{'horizontal': true}"/>
                                 <field name="customer_id"/>
-                            </group>
-                            <group>
-                                <field name="brand" placeholder="Contoh: Toyota / Honda"/>
-                                <field name="color"/>
                             </group>
                         </group>
                     </sheet>
