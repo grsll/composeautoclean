@@ -53,7 +53,7 @@
         </record>
 
         <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="kendaraan_menu_act" name="Kendaraan" parent="master_data_menu_categ" action="cdn_kendaraan_action" sequence="20"/>
+        <menuitem id="kendaraan_menu_act" name="Kendaraan" parent="menu_master_data" action="cdn_kendaraan_action" sequence="20"/>
     
     </data>
     
