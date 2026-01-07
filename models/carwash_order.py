@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
-
+# tes
 class CarwashOrder(models.Model):
     _name = "carwash.order"
     _description = "Carwash Order"
