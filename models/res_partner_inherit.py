@@ -10,3 +10,8 @@ class ResPartner(models.Model):
         selection=[("mobil", "Mobil"), ("motor", "Motor"), ("bus", "Bus")],
         string="Jenis Kendaraan",
     )
+    carwash_order_ids = fields.One2many(
+        "carwash.order",
+        "partner_id",
+        string="Riwayat Pesanan",
+    )
