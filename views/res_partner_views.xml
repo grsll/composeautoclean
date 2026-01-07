@@ -10,8 +10,6 @@
                     <field name="name"/>
                     <field name="street" string="Alamat"/>
                     <field name="phone" string="No HP"/>
-                    <field name="jenis_kendaraan"/>
-                    <field name="nomor_kendaraan"/>
                 </list>
             </field>
         </record>
@@ -30,8 +28,6 @@
                                 <field name="street" string="Alamat"/>
                             </group>
                             <group>
-                                <field name="jenis_kendaraan"/>
-                                <field name="nomor_kendaraan"/>
                             </group>
                         </group>
                         <notebook>
@@ -43,6 +39,19 @@
                                         <field name="jenis_kendaraan"/>
                                         <field name="product_id" string="Layanan"/>
                                         <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'invoiced'"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Daftar Kendaraan" name="vehicle_list">
+                                <field name="kendaraan_ids" context="{'default_customer_id': id}">
+                                    <list editable="bottom" string="Daftar Kendaraan">
+                                        <field name="nomor_kendaraan" placeholder="B 1234 ABC"/>
+                                        <field name="jenis_kendaraan"/>
+                                        <field name="merk"/>
+                                        <field name="tipe"/>
+                                        <field name="warna"/>
+                                        <field name="catatan"/>
+                                        <field name="active" column_invisible="True"/>
                                     </list>
                                 </field>
                             </page>
