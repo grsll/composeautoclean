@@ -2,60 +2,107 @@
 <odoo>
 
     <data>
-    
-        <!-- cdn_kendaraan list view -->
+
+
         <record id="cdn_kendaraan_view_list" model="ir.ui.view">
             <field name="name">cdn.kendaraan.view.list</field>
             <field name="model">cdn.kendaraan</field>
             <field name="arch" type="xml">
-                <list>
-                    <!-- Add your fields here -->
-                    <field name="customer_name"/>
-                    <field name="jenis_kendaraan"/>
-                    <field name="customer_alamat"/>
+                <list string="Daftar Kendaraan" decoration-muted="not active">
+                    <field name="nomor_polisi"/>
+                    <field name="merk"/>
+                    <field name="tipe"/>
+                    <field name="customer_id" widget="many2one_avatar"/>
+                    <field name="jenis_kendaraan_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="active" column_invisible="True"/>
                 </list>
             </field>
         </record>
 
-        <!-- cdn_kendaraan form view -->
+
         <record id="cdn_kendaraan_view_form" model="ir.ui.view">
             <field name="name">cdn.kendaraan.view.form</field>
             <field name="model">cdn.kendaraan</field>
             <field name="arch" type="xml">
-                <form string="">
+                <form string="Kendaraan">
                     <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        
+                        <div class="oe_title">
+                            <label for="nomor_polisi"/>
+                            <h1>
+                                <field name="nomor_polisi" placeholder="B 1234 ABC"/>
+                            </h1>
+                        </div>
+
                         <group>
-                            <!-- Add your fields here -->
-                            <field name="customer_id"/>
-                            <field name="jenis_kendaraan"/>
-                            <field name="customer_name"/>
-                            <field name="customer_alamat"/>
-                        </group>
+                            <group string="Detail Unit">
+                                <field name="merk" placeholder="Contoh: Toyota, Honda..."/>
+                                <field name="tipe" placeholder="Contoh: Avanza, Vario..."/>
+                                <field name="warna" widget="color_picker"/>
+                                <field name="active" invisible="1"/>
+                            </group>
+
+                            <group string="Informasi Pemilik">
+                                <field name="customer_id" options="{'no_create': True, 'no_open': False}"/>
+                                <field name="customer_telepon" 
+                                    options="{'enable_sms': False}"/>
+                                <field name="jenis_kendaraan_ids" 
+                                    widget="many2many_tags" 
+                                    options="{'color_field': 'color', 'no_create_edit': True}" 
+                                    placeholder="Pilih kategori kendaraan..."/>
+                            </group>
+                        </group> <notebook>
+                            <page string="Detail Alamat &amp; Catatan" name="notes">
+                                <group>
+                                    <field name="customer_alamat" readonly="1"/>
+                                    <field name="catatan" placeholder="Contoh: Lecet pada bemper depan..."/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <!-- cdn_kendaraan action window -->
-        <record id="cdn_kendaraan_action" model="ir.actions.act_window">
-            <field name="name">cdn.kendaraan.action</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">cdn.kendaraan</field>
-            <field name="view_mode">list,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    <!-- Add Text Here -->
-                </p><p>
-                    <!-- More details about what a user can do with this object will be OK --> 
-                
-                </p>
+        <record id="cdn_kendaraan_view_search" model="ir.ui.view">
+            <field name="name">cdn.kendaraan.view.search</field>
+            <field name="model">cdn.kendaraan</field>
+            <field name="arch" type="xml">
+                <search string="Cari Kendaraan">
+                    <field name="nomor_polisi"/>
+                    <field name="merk"/>
+                    <field name="customer_id"/>
+                    
+                    <field name="jenis_kendaraan_ids"/>
+
+                    <filter string="Aktif" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Terarsip" name="inactive" domain="[('active', '=', False)]"/>
+                    
+                    <group expand="0" string="Group By">
+                        <filter string="Customer" name="group_customer" context="{'group_by': 'customer_id'}"/>
+                        <filter string="Merk" name="group_merk" context="{'group_by': 'merk'}"/>
+                    </group>
+                </search>
             </field>
         </record>
 
-        <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="kendaraan_menu_act" name="Kendaraan" parent="menu_master_data" action="cdn_kendaraan_action" sequence="20"/>
-    
+        <record id="cdn_kendaraan_action" model="ir.actions.act_window">
+            <field name="name">Kendaraan Pelanggan</field>
+            <field name="res_model">cdn.kendaraan</field>
+            <field name="view_mode">list,form</field> 
+            <field name="search_view_id" ref="cdn_kendaraan_view_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Belum ada data kendaraan.</p>
+            </field>
+        </record>
+
+        <menuitem id="kendaraan_menu_act" 
+                  name="Kendaraan" 
+                  parent="menu_master_data" 
+                  action="cdn_kendaraan_action" 
+                  sequence="20"/>
     </data>
-    
+
 
 </odoo>
