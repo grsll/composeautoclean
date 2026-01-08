@@ -31,11 +31,10 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string="Riwayat Pesanan" name="carwash_order_history">
+                            <page string="Riwayat Pesanan" name="carwash_order_history" invisible="not carwash_order_ids">
                                 <field name="carwash_order_ids" readonly="1">
                                     <list>
                                         <field name="create_date" string="Tanggal"/>
-                                        <field name="nomor_kendaraan"/>
                                         <field name="jenis_kendaraan"/>
                                         <field name="product_id" string="Layanan"/>
                                         <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'invoiced'"/>
