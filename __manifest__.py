@@ -13,7 +13,7 @@ Manajemen cuci mobil dengan fitur pendaftaran pelanggan, data kendaraan, dan riw
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "product", "mail"],
+    "depends": ["base", "product", "account", "mail"],
     # always loaded
     "data": [
         "security/groups.xml",
@@ -21,9 +21,9 @@ Manajemen cuci mobil dengan fitur pendaftaran pelanggan, data kendaraan, dan riw
         "views/views.xml",
         "views/templates.xml",
         "views/menu.xml",
-        "views/kendaraan.xml",
         "views/res_partner_views.xml",
         "views/carwash_order.xml",
+        "views/order_state_views.xml",
     ],
     # only loaded in demonstration mode
     "demo": [

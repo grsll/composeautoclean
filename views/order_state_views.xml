@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Form View to add Operational State -->
+        <record id="carwash_order_view_form_inherit_state" model="ir.ui.view">
+            <field name="name">carwash.order.view.form.inherit.state</field>
+            <field name="model">carwash.order</field>
+            <field name="inherit_id" ref="composeautoclean.carwash_order_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Change Invoice button visibility -->
+                <xpath expr="//button[@name='action_invoice']" position="attributes">
+                    <attribute name="invisible">state != 'confirmed' or operational_state != 'selesai'</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='jenis_kendaraan']" position="after">
+                    <field name="operational_state" widget="radio" options="{'horizontal': true}" invisible="state == 'draft'"/>
+                    <field name="queue_no" invisible="state == 'draft' or operational_state != 'antri'"/>
+                    <field name="estimation_time" invisible="state == 'draft' or operational_state not in ['antri', 'cuci', 'kering']" placeholder="Contoh: 30 Menit"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit List View to add Operational State -->
+        <record id="carwash_order_view_list_inherit_state" model="ir.ui.view">
+            <field name="name">carwash.order.view.list.inherit.state</field>
+            <field name="model">carwash.order</field>
+            <field name="inherit_id" ref="composeautoclean.carwash_order_view_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='jenis_kendaraan']" position="after">
+                    <field name="operational_state" widget="badge" decoration-info="operational_state == 'antri'" decoration-warning="operational_state == 'cuci'" decoration-primary="operational_state == 'kering'" decoration-success="operational_state == 'selesai'"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

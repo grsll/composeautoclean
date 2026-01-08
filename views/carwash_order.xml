@@ -8,8 +8,6 @@
             <field name="arch" type="xml">
                 <list>
                     <field name="partner_id"/>
-                    <field name="vehicle_id"/>
-                    <field name="nomor_kendaraan"/>
                     <field name="jenis_kendaraan"/>
                     <field name="price"/>
                     <field name="state"/>
@@ -32,11 +30,10 @@
                     <sheet>
                         <group>
                             <field name="partner_id"/>
-                            <field name="nomor_kendaraan"/>
+                            <field name="vehicle_id" domain="[('customer_id', '=', partner_id)]" options="{'no_create': True}"/>
                             <field name="jenis_kendaraan"/>
-                             <field name="product_id" domain="[('type', '=', 'service')]"/>
+                            <field name="product_id"/>
                             <field name="price"/>
-
                         </group>
                     </sheet>
                     <chatter/>
