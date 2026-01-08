@@ -52,6 +52,6 @@
         </record>
 
         <!-- Menu item for carwash order -->
-        <menuitem id="carwash_order_menu_act" name="Carwash Order" parent="menu_master_data" action="carwash_order_action" sequence="30"/>
+        <menuitem id="carwash_order_menu_act" name="Carwash Order" parent="menu_carwash_order" action="carwash_order_action" sequence="30"/>
     </data>
 </odoo>
