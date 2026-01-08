@@ -12,7 +12,6 @@
                     <field name="customer_id" widget="many2one_avatar"/>
                     <field name="jenis_kendaraan"/>
                     <field name="merk"/>
-                    <field name="tipe"/>
                     <field name="active" column_invisible="True"/>
                 </list>
             </field>
@@ -45,7 +44,6 @@
                                         <field name="nomor_kendaraan"/>
                                         <field name="jenis_kendaraan"/>
                                         <field name="merk"/>
-                                        <field name="tipe"/>
                                         <field name="warna"/>
                                         <field name="catatan"/>
                                         <field name="active" column_invisible="True"/>

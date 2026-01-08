@@ -48,9 +48,7 @@
                                         <field name="nomor_kendaraan" placeholder="B 1234 ABC"/>
                                         <field name="jenis_kendaraan"/>
                                         <field name="merk"/>
-                                        <field name="tipe"/>
                                         <field name="warna"/>
-                                        <field name="catatan"/>
                                         <field name="active" column_invisible="True"/>
                                     </list>
                                 </field>

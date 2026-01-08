@@ -30,8 +30,7 @@ class Kendaraan(models.Model):
         required=True,
     )
 
-    merk = fields.Char(string="Merk Kendaraan")
-    tipe = fields.Char(string="Tipe/Model")
+    merk = fields.Char(string="Merk Dan TipeKendaraan")
     warna = fields.Char(string="Warna")
 
     customer_alamat = fields.Char(
