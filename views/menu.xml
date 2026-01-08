@@ -3,5 +3,6 @@
     <data>
         <menuitem id="menu_root" name="Auto Clean" sequence="0" web_icon="composeautoclean,static/img/car-service.png"/>
         <menuitem id="menu_master_data" name="Data Master" parent="menu_root" sequence="10"/>
+        <menuitem id="menu_carwash_order" name="Order" parent="menu_root" sequence="20"/>
     </data>
 </odoo>

@@ -34,8 +34,9 @@
                             <field name="partner_id"/>
                             <field name="nomor_kendaraan"/>
                             <field name="jenis_kendaraan"/>
-                            <field name="product_id"/>
+                             <field name="product_id" domain="[('type', '=', 'service')]"/>
                             <field name="price"/>
+
                         </group>
                     </sheet>
                 </form>
@@ -51,6 +52,6 @@
         </record>
 
         <!-- Menu item for carwash order -->
-        <menuitem id="carwash_order_menu_act" name="Carwash Order" parent="menu_master_data" action="carwash_order_action" sequence="30"/>
+        <menuitem id="carwash_order_menu_act" name="Carwash Order" parent="menu_carwash_order" action="carwash_order_action" sequence="30"/>
     </data>
 </odoo>

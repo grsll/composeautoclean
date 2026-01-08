@@ -1,6 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_cdn_kendaraan,cdn.kendaraan,model_cdn_kendaraan,base.group_user,1,1,1,1
-access_carwash_order,carwash.order,model_carwash_order,base.group_user,1,1,1,1
+access_cdn_kendaraan,cdn_kendaraan,model_cdn_kendaraan,composeautoclean.group_auto_clean_user,1,0,0,0
+access_cdn_jenis_kendaraan,cdn_jenis_kendaraan,model_cdn_jenis_kendaraan,composeautoclean.group_auto_clean_user,1,0,0,0
+access_carwash_order,carwash_order,model_carwash_order,composeautoclean.group_auto_clean_user,1,0,0,0
 
+access_cdn_kendaraan_admin,cdn_kendaraan_admin,model_cdn_kendaraan,composeautoclean.group_auto_clean_admin,1,1,1,1
+access_cdn_jenis_kendaraan_admin,cdn_jenis_kendaraan_admin,model_cdn_jenis_kendaraan,composeautoclean.group_auto_clean_admin,1,1,1,1
+access_carwash_order_admin,carwash_order_admin,model_carwash_order,composeautoclean.group_auto_clean_admin,1,1,1,1
 
