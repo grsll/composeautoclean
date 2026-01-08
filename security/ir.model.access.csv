@@ -8,4 +8,3 @@ access_cdn_kendaraan_admin,cdn_kendaraan_admin,model_cdn_kendaraan,composeautocl
 access_cdn_jenis_kendaraan_admin,cdn_jenis_kendaraan_admin,model_cdn_jenis_kendaraan,composeautoclean.group_auto_clean_admin,1,1,1,1
 access_carwash_order_admin,carwash_order_admin,model_carwash_order,composeautoclean.group_auto_clean_admin,1,1,1,1
 
-
