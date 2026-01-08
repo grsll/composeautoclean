@@ -5,6 +5,7 @@ from odoo import models, fields, api
 # tes
 class CarwashOrder(models.Model):
     _name = "carwash.order"
+    _inherit = ["mail.thread"]
     _description = "Carwash Order"
     _order = "id desc"
 
@@ -12,6 +13,7 @@ class CarwashOrder(models.Model):
         "res.partner",
         string="Customer",
         required=True,
+        tracking=True,
     )
     vehicle_id = fields.Many2one(
         "cdn.kendaraan",
@@ -37,6 +39,7 @@ class CarwashOrder(models.Model):
         "product.product",
         string="Varian Jasa",
         required=True,
+        tracking=True,
     )
 
     price = fields.Float(
@@ -50,6 +53,7 @@ class CarwashOrder(models.Model):
         "account.move",
         string="Invoice",
         readonly=False,
+        tracking=True,
     )
 
     state = fields.Selection(

@@ -13,7 +13,7 @@ Manajemen cuci mobil dengan fitur pendaftaran pelanggan, data kendaraan, dan riw
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "product", "account"],
+    "depends": ["base", "product", "account", "mail"],
     # always loaded
     "data": [
         "security/groups.xml",

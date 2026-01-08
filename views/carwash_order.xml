@@ -36,6 +36,7 @@
                             <field name="price"/>
                         </group>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>
