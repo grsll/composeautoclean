@@ -16,7 +16,8 @@ Manajemen cuci mobil dengan fitur pendaftaran pelanggan, data kendaraan, dan riw
     "depends": ["base", "product"],
     # always loaded
     "data": [
-        # 'security/ir.model.access.csv',
+        "security/groups.xml",
+        "security/ir.model.access.csv",
         "views/views.xml",
         "views/templates.xml",
         "views/menu.xml",
