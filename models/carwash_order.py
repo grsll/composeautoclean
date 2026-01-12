@@ -10,7 +10,7 @@ class CarwashOrder(models.Model):
     _order = "id desc"
 
     customer_id = fields.Many2one(
-        "composeautoclean.customer",
+        "cdn.customer",
         string="Customer",
         required=True,
         tracking=True,
