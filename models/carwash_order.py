@@ -9,8 +9,8 @@ class CarwashOrder(models.Model):
     _description = "Carwash Order"
     _order = "id desc"
 
-    partner_id = fields.Many2one(
-        "res.partner",
+    customer_id = fields.Many2one(
+        "composeautoclean.customer",
         string="Customer",
         required=True,
         tracking=True,
@@ -78,8 +78,8 @@ class CarwashOrder(models.Model):
         for rec in self:
             rec.price = rec.product_id.lst_price if rec.product_id else 0.0
 
-    @api.onchange("partner_id")
-    def _onchange_partner_id(self):
+    @api.onchange("customer_id")
+    def _onchange_customer_id(self):
         """
         Reset fields when customer changes
         """
@@ -98,7 +98,7 @@ class CarwashOrder(models.Model):
             raise ValueError("Product does not have an income account set.")
         invoice_vals = {
             "move_type": "out_invoice",
-            "partner_id": self.partner_id.id,
+            "partner_id": self.customer_id.id,
             "invoice_date": fields.Date.today(),
             "invoice_line_ids": [
                 (
@@ -124,4 +124,6 @@ class CarwashOrder(models.Model):
             "view_type": "form",
             "target": "current",
         }
-#tes test
+
+
+# tes test

@@ -7,7 +7,7 @@
             <field name="model">carwash.order</field>
             <field name="arch" type="xml">
                 <list>
-                    <field name="partner_id"/>
+                    <field name="customer_id"/>
                     <field name="jenis_kendaraan"/>
                     <field name="price"/>
                     <field name="state"/>
@@ -29,8 +29,8 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="partner_id" readonly="state == 'invoiced'"/>
-                            <field name="vehicle_id" domain="[('customer_id', '=', partner_id)]" options="{'no_create': True}" readonly="state == 'invoiced'"/>
+                            <field name="customer_id" readonly="state == 'invoiced'"/>
+                            <field name="vehicle_id" domain="[('customer_id', '=', customer_id)]" options="{'no_create': True}" readonly="state == 'invoiced'"/>
                             <field name="jenis_kendaraan" readonly="state == 'invoiced'"/>
                             <field name="product_id" readonly="state == 'invoiced'"/>
                             <field name="price"/>

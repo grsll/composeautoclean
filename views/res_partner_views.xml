@@ -1,82 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Carwash Customer List View -->
-        <record id="view_carwash_customer_list" model="ir.ui.view">
-            <field name="name">carwash.customer.list</field>
+        <!-- Partner Form View - Add Gender Field -->
+        <record id="view_partner_form_gender" model="ir.ui.view">
+            <field name="name">res.partner.form.gender</field>
             <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <list>
-                    <field name="name"/>
-                    <field name="street" string="Alamat"/>
-                    <field name="phone" string="No HP"/>
-                </list>
+                <field name="phone" position="after">
+                    <field name="jenis_kelamin"/>
+                </field>
             </field>
         </record>
-
-        <!-- Carwash Customer Form View -->
-        <record id="view_carwash_customer_form" model="ir.ui.view">
-            <field name="name">carwash.customer.form</field>
-            <field name="model">res.partner</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="phone" string="No HP"/>
-                                <field name="street" string="Alamat"/>
-                            </group>
-                            <group>
-                            </group>
-                        </group>
-                        <notebook>
-                            <page string="Riwayat Pesanan" name="carwash_order_history" invisible="not carwash_order_ids">
-                                <field name="carwash_order_ids" readonly="1">
-                                    <list>
-                                        <field name="create_date" string="Tanggal"/>
-                                        <field name="jenis_kendaraan"/>
-                                        <field name="product_id" string="Layanan"/>
-                                        <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'invoiced'"/>
-                                    </list>
-                                </field>
-                            </page>
-                            <page string="Daftar Kendaraan" name="vehicle_list">
-                                <field name="kendaraan_ids" context="{'default_customer_id': id}">
-                                    <list editable="bottom" string="Daftar Kendaraan">
-                                        <field name="nomor_kendaraan" placeholder="B 1234 ABC"/>
-                                        <field name="jenis_kendaraan"/>
-                                        <field name="merk"/>
-                                        <field name="warna"/>
-                                        <field name="active" column_invisible="True"/>
-                                    </list>
-                                </field>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <!-- Customer Action -->
-        <record id="action_carwash_customer" model="ir.actions.act_window">
-            <field name="name">Customers</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
-            <field name="view_mode">list,form</field>
-            <field name="context">{'default_is_company': False}</field>
-            <field name="domain">[('is_company', '=', False), ('user_ids', '=', False)]</field>
-            <field name="view_ids" eval="[(5, 0, 0), 
-                (0, 0, {'view_mode': 'list', 'view_id': ref('view_carwash_customer_list')}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('view_carwash_customer_form')})]"/>
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                    Create a new customer
-                </p>
-            </field>
-        </record>
-
-        <!-- Menu Item -->
-        <menuitem id="customer_menu_act" name="Customer" parent="menu_master_data" action="action_carwash_customer" sequence="10"/>
     </data>
 </odoo>
