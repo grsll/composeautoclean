@@ -25,6 +25,7 @@ Manajemen cuci mobil dengan fitur pendaftaran pelanggan, data kendaraan, dan riw
         "views/kendaraan_views.xml",
         "views/carwash_order.xml",
         "views/order_state_views.xml",
+        "views/product_views.xml",
     ],
     # only loaded in demonstration mode
     "demo": [
