@@ -13,7 +13,7 @@
                 </xpath>
 
                 <xpath expr="//field[@name='jenis_kendaraan']" position="after">
-                    <field name="operational_state" widget="radio" options="{'horizontal': true}" invisible="state == 'draft'"/>
+                    <field name="operational_state" widget="radio" options="{'horizontal': true}" invisible="state == 'draft'" readonly="state == 'invoiced'"/>
                     <field name="queue_no" invisible="state == 'draft' or operational_state != 'antri'"/>
                     <field name="estimation_time" invisible="state == 'draft' or operational_state not in ['antri', 'cuci', 'kering']" placeholder="Contoh: 30 Menit"/>
                 </xpath>
