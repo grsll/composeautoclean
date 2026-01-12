@@ -65,6 +65,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_mode">list,form</field>
             <field name="context">{'default_is_company': False}</field>
+            <field name="domain">[('is_company', '=', False), ('user_ids', '=', False)]</field>
             <field name="view_ids" eval="[(5, 0, 0), 
                 (0, 0, {'view_mode': 'list', 'view_id': ref('view_carwash_customer_list')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('view_carwash_customer_form')})]"/>
