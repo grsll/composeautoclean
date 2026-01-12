@@ -1,5 +1,5 @@
 <odoo>
-    <data noupdate="1">
+    <data>
         <record id="module_category_auto_clean" model="ir.module.category">
             <field name="name">Auto Clean</field>
             <field name="sequence">10</field>

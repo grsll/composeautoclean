@@ -1,47 +1,13 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
-
-class Kendaraan(models.Model):
-    _name = "cdn.kendaraan"
-    _description = "Kendaraan Customer"
-    _rec_name = "nomor_kendaraan"
-    _order = "id desc"
-
-    customer_id = fields.Many2one(
-        "res.partner",
-        string="Customer",
-        required=True,
-        ondelete="cascade",
-    )
-
-    nomor_kendaraan = fields.Char(string="Nomor Kendaraan", required=True)
-
-    jenis_kendaraan = fields.Selection(
-        [
-            ("mobil", "Mobil"),
-            ("motor", "Motor"),
-            ("bus", "Bus"),
-        ],
-        required=True,
-    )
-
-    merk = fields.Char(string="Merk dan Tipe")
-    warna = fields.Char(string="Warna")
-    catatan = fields.Text(string="Catatan Kondisi")
-    active = fields.Boolean(default=True)
-
-
 class ResPartner(models.Model):
     _inherit = "res.partner"
-    
-    carwash_order_ids = fields.One2many(
-        "carwash.order",
-        "partner_id",
-        string="Riwayat Pesanan",
-    )
-    kendaraan_ids = fields.One2many(
-        "cdn.kendaraan",
-        "customer_id",
-        string="Daftar Kendaraan",
+
+    jenis_kelamin = fields.Selection(
+        [
+            ("laki", "Laki-laki"),
+            ("perempuan", "Perempuan"),
+        ],
+        string="Jenis Kelamin",
     )
