@@ -5,4 +5,3 @@ access_carwash_order,carwash_order,model_carwash_order,composeautoclean.group_au
 
 access_cdn_kendaraan,cdn_kendaraan,model_cdn_kendaraan,composeautoclean.group_auto_clean_user,1,1,1,1
 access_carwash_order_admin,carwash_order_admin,model_carwash_order,composeautoclean.group_auto_clean_admin,1,1,1,1
-

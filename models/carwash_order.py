@@ -34,12 +34,19 @@ class CarwashOrder(models.Model):
     def _onchange_vehicle_id(self):
         if self.vehicle_id:
             self.jenis_kendaraan = self.vehicle_id.jenis_kendaraan
+            self.product_id = False
+
+    @api.onchange("jenis_kendaraan")
+    def _onchange_jenis_kendaraan(self):
+        if self.jenis_kendaraan:
+            self.product_id = False
 
     product_id = fields.Many2one(
         "product.product",
         string="Varian Jasa",
         required=True,
         tracking=True,
+        domain="['|', ('jenis_kendaraan', '=', False), ('jenis_kendaraan', '=', jenis_kendaraan)]",
     )
 
     price = fields.Float(
@@ -64,7 +71,6 @@ class CarwashOrder(models.Model):
         ],
         string="Status",
         default="draft",
-        readonly=True,
     )
 
     @api.depends("product_id")
