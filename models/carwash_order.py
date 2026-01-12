@@ -118,3 +118,4 @@ class CarwashOrder(models.Model):
             "view_type": "form",
             "target": "current",
         }
+# tes
