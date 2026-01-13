@@ -8,3 +8,9 @@ access_cdn_customer_admin,cdn_customer_admin,model_cdn_customer,composeautoclean
 
 access_cdn_kendaraan_user,cdn_kendaraan_user,model_cdn_kendaraan,composeautoclean.group_auto_clean_user,1,0,0,0
 access_cdn_kendaraan_admin,cdn_kendaraan_admin,model_cdn_kendaraan,composeautoclean.group_auto_clean_admin,1,1,1,1
+
+access_detailing_order_user,detailing_order_user,model_detailing_order,composeautoclean.group_auto_clean_user,1,0,0,0
+access_detailing_order_admin,detailing_order_admin,model_detailing_order,composeautoclean.group_auto_clean_admin,1,1,1,1
+
+access_poles_order_user,poles_order_user,model_poles_order,composeautoclean.group_auto_clean_user,1,0,0,0
+access_poles_order_admin,poles_order_admin,model_poles_order,composeautoclean.group_auto_clean_admin,1,1,1,1
