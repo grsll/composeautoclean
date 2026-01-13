@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <field name="phone" position="after">
-                    <field name="jenis_kelamin"/>
+                    <field name="is_carwash_customer"/>
                 </field>
             </field>
         </record>

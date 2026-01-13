@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
 
@@ -7,8 +6,15 @@ class Customer(models.Model):
     _description = "Tabel Customer"
     _rec_name = "nama"
     _order = "id desc"
-
+    partner_id = fields.Many2one(
+        "res.partner",
+        string="Partner",
+        required=True,
+        ondelete="cascade",
+        domain="[('is_carwash_customer', '=', True)]",
+    )
     nama = fields.Char(string="Nama Customer", required=True)
+
     no_hp = fields.Char(string="Nomor HP", required=True)
     alamat = fields.Text(string="Alamat")
 

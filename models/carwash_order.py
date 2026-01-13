@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
 
-# tes
 class CarwashOrder(models.Model):
     _name = "carwash.order"
     _inherit = ["mail.thread"]
@@ -122,7 +120,6 @@ class CarwashOrder(models.Model):
             "invoice_line_ids": [],
         }
 
-        # Main product line
         if self.product_id:
             account = self.product_id._get_product_accounts()["income"]
             if not account:
@@ -142,7 +139,6 @@ class CarwashOrder(models.Model):
                 )
             )
 
-        # Poles addon line
         if self.poles_product_id:
             account = self.poles_product_id._get_product_accounts()["income"]
             if not account:
@@ -162,7 +158,6 @@ class CarwashOrder(models.Model):
                 )
             )
 
-        # Detailing addon line
         if self.detailing_product_id:
             account = self.detailing_product_id._get_product_accounts()["income"]
             if not account:
@@ -194,5 +189,3 @@ class CarwashOrder(models.Model):
             "target": "current",
         }
 
-
-# tes test
