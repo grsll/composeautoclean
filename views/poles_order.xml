@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- poles order list view -->
+        <record id="poles_order_view_list" model="ir.ui.view">
+            <field name="name">poles.order.view.list</field>
+            <field name="model">poles.order</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="customer_id"/>
+                    <field name="jenis_kendaraan"/>
+                    <field name="price"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- poles order form view -->
+        <record id="poles_order_view_form" model="ir.ui.view">
+            <field name="name">poles.order.view.form</field>
+            <field name="model">poles.order</field>
+            <field name="arch" type="xml">
+                <form string="Poles Order">
+                    <header>
+                        <button name="action_draft" string="Draft" type="object" invisible="state not in ['confirmed', 'invoiced']"/>
+                        <button name="action_confirm" string="Confirm" type="object" invisible="state != 'draft'"/>
+                        <button name="action_invoice" string="Invoice" type="object" invisible="state != 'confirmed'"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="customer_id" readonly="state == 'invoiced'"/>
+                            <field name="vehicle_id" domain="[('customer_id', '=', customer_id)]" options="{'no_create': True}" readonly="state == 'invoiced'"/>
+                            <field name="jenis_kendaraan" readonly="state == 'invoiced'"/>
+                            <field name="product_id" readonly="state == 'invoiced'"/>
+                            <field name="price"/>
+                            <field name="invoice_id" invisible="not invoice_id" readonly="1"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- poles order action window -->
+        <record id="poles_order_action" model="ir.actions.act_window">
+            <field name="name">Poles Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">poles.order</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Menu item for poles order -->
+        <menuitem id="poles_order_menu_act" name="Poles Order" parent="menu_carwash_order" action="poles_order_action" sequence="50"/>
+    </data>
+</odoo>

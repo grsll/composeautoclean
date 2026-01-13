@@ -7,3 +7,5 @@ from . import carwash_order
 from . import carwash_order_state
 from . import product_inherit
 from . import kendaraan
+from . import detailing_order
+from . import poles_order
