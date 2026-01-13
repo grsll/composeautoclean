@@ -32,8 +32,28 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string="Riwayat Pesanan" name="carwash_order_history" invisible="not carwash_order_ids">
+                            <page string="Riwayat Cuci Mobil" name="carwash_order_history" invisible="not carwash_order_ids">
                                 <field name="carwash_order_ids" readonly="1">
+                                    <list>
+                                        <field name="create_date" string="Tanggal"/>
+                                        <field name="jenis_kendaraan"/>
+                                        <field name="product_id" string="Layanan"/>
+                                        <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'invoiced'"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Riwayat Detailing" name="detailing_order_history" invisible="not detailing_order_ids">
+                                <field name="detailing_order_ids" readonly="1">
+                                    <list>
+                                        <field name="create_date" string="Tanggal"/>
+                                        <field name="jenis_kendaraan"/>
+                                        <field name="product_id" string="Layanan"/>
+                                        <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'invoiced'"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Riwayat Poles" name="poles_order_history" invisible="not poles_order_ids">
+                                <field name="poles_order_ids" readonly="1">
                                     <list>
                                         <field name="create_date" string="Tanggal"/>
                                         <field name="jenis_kendaraan"/>
