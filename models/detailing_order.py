@@ -96,7 +96,7 @@ class DetailingOrder(models.Model):
             raise ValueError("Product does not have an income account set.")
         invoice_vals = {
             "move_type": "out_invoice",
-            "partner_id": self.customer_id.id,
+            "partner_id": self.customer_id.partner_id.id,
             "invoice_date": fields.Date.today(),
             "invoice_line_ids": [
                 (

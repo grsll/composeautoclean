@@ -29,6 +29,16 @@ class Customer(models.Model):
         "customer_id",
         string="Riwayat Pesanan",
     )
+    detailing_order_ids = fields.One2many(
+        "detailing.order",
+        "customer_id",
+        string="Riwayat Detailing",
+    )
+    poles_order_ids = fields.One2many(
+        "poles.order",
+        "customer_id",
+        string="Riwayat Poles",
+    )
 
     active = fields.Boolean(default=True)
 
